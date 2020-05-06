@@ -1,0 +1,12 @@
+ <!-- <p>menu-component works!</p>   -->
+<nav class="menu">
+  <ul class="menu-options-list">
+    <li *ngFor="let option of menuOptions" class="menu-option" (click)="openTab(option.url)">
+      {{option.name}}
+      <!-- <router-outlet></router-outlet>  -->
+     <!-- <app-main-component class="main-content-container"></app-main-component> -->
+
+    </li>
+  </ul>
+
+</nav>

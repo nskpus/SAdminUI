@@ -1,0 +1,134 @@
+<div class="maindiv">
+
+    <div class="jumbotron" style="margin: none;background: white">
+
+        <button type="submit" class="clone" style='margin-right:16px' (click)="addRow($event)">+</button>
+        <button type="submit" class="clone" style='margin-right:16px' (click)="deleteRow($event)">-</button>                
+        <button type="submit" class="clone" style='margin-right:16px'>Clone</button>
+        <button type="submit" class="clonefromotherprojects" style='margin-right:16px' data-toggle="modal"
+            data-target="#myModal">Clone From Other Projects</button>
+        <button type="submit" class="save" style='margin-right:16px' (click)="save()">Save</button>
+        <button type="submit" class="estimatecampaign" style='margin-right:16px'>Estimate Campaign</button>
+
+        <a href="Segmentation Matrix Training Module">Segmentation Matrix Training Module &nbsp;</a><br>
+
+        <span style=margin-left:85px”><br></span>
+
+        
+
+        <div class="grid1" id="myGrid">
+            <ag-grid-angular style="width: 1000px; height: 200px;" 
+            class="ag-theme-balham" 
+            [pagination]="true"
+            [(rowData)]="rowData"
+            [columnDefs]="columnDefs"            
+            [modules]="modules">            
+            </ag-grid-angular>
+        </div>
+
+        <div>
+            <label>Select:</label> <select>
+                <span style="margin-left:85px"><br></span>
+                <option *ngFor="let i of data1">{{i}}</option>
+            </select>&nbsp;&nbsp;
+            
+
+            <button type="submit" style="position: absolute; right: 50;" data-toggle="modal" data-target="#myModal">
+                Display Qualifiers</button>
+            <span style=margin-left:100px”><br></span>
+            <span style=margin-left:100px”><br></span>
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="position: absolute; left: 250; width:700px;">
+                        <div class="title">
+                            <h6 align="center">Other Campaingn Details</h6>
+                            <span style=margin-left:85px”><br></span>
+                        </div>
+                         <div class="searchcontent">
+                            <table>
+                                <tr>
+                                    <td> Project Name:</td>
+                                    <!-- <td><input type="text" name="projectname" placeholder="Projectname" ></td> -->
+                                    <select name="projectname" placeholder="Projectname">
+                                        <option value="volvo">Aston Martin</option>
+                                        <option value="saab">Audi</option>
+                                        <option value="fiat">porsche</option>
+                                        <option value="audi">Lombarghini</option>
+                                        <option value="audi">Ferrari</option>
+                                      </select>
+                                </tr>
+                                <tr>
+                                    <td> Launch Date:</td>
+                                    <td><input type="date" name="launchdate" placeholder="Launchdate"></td>
+                                </tr>
+                                <tr>
+                                    <td> Reference Number:</td>
+                                    <td><input type="text" name="referenceno" placeholder="Referenceno"></td>
+                                </tr>
+                            </table>
+                            <span style=margin-left:85px”><br></span>
+
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+
+                                <tr>
+                                    <ag-grid-angular style="width: 650px; height: 250px;"                                    
+                                    class="ag-theme-balham"
+                                    [pagination]="true" 
+                                    [(rowData)]="rowData1" 
+                                    [columnDefs]="columnDefs1"                                   
+                                    [gridOptions]="gridOptions"
+                                    (rowClicked)="onRowClicked($event)"                                         
+                                    [modules]="modules">
+                                    </ag-grid-angular>
+
+                                </tr>
+                            </table>
+
+                            <input type="button" value="Save" style="float: right;" (click)="dialogsave($event)" data-dismiss="modal">
+                            <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div *ngIf="databeforechange">
+                <ag-grid-angular style="width: 1000px; height: 300px;" 
+                class="ag-theme-balham" 
+                [pagination]="true"
+                [enableFilter]="true" 
+                [(rowData)]="rowData1"
+                [columnDefs]="columnDefs1"
+                (rowClicked)="onRowClicked($event)"              
+                (gridReady)="onGridReady($event)"
+                [modules]="modules">
+                </ag-grid-angular>
+            </div>
+            <div *ngIf="datachangedflag">
+                <ag-grid-angular style="width: 1000px; height: 300px;" 
+                class="ag-theme-balham" 
+                [pagination]="true"
+                [enableFilter]="true" 
+                [(rowData)]="modeldata" 
+                [columnDefs]="columnDefs1"
+                (rowClicked)="onRowClicked($event)"
+                (gridReady)="onGridReady($event)"
+                [modules]="modules">
+                </ag-grid-angular>
+            </div>
+        </div>
+        <!-- <div class="grid3">
+            <ag-grid-angular style="width: 1000px; height: 200px;" class="ag-theme-balham" [pagination]="true"
+                [enableFilter]="true" 
+                [(rowData)]="this.modeldata"
+                [columnDefs]="columnDefs1" 
+                (rowClicked)="onRowClicked($event)"
+                [modules]="modules">
+            </ag-grid-angular>
+        </div> -->
+       
+    </div>

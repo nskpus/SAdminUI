@@ -1,0 +1,89 @@
+<!-- <div class="jumbotron" style="margin: none;"> -->
+    <!-- <div class="row" style="height: 550px;width:80%"> -->
+      <!-- <div class="col-sm-2" style="border: 0.2px solid;width: 50%">
+        </div>  -->
+            <!-- <div class="container"> -->
+               <div class="row custom-wrapper" style="margin: 10px 10px 10px 30px">
+                   <!-- <div class="col-md-12" style="border: 0.5px solid;width: 50%"> -->
+                     <div style="height: 90px;width:700px">
+                         Select  Product :
+                           <select [(ngModel)]="ProductHeader.name" (ngModelChange)="SearchProduct(ProductHeader.name)" style="width: 150px;height: 35px;">
+                           <option *ngFor="let prod of ProductHeader" >{{prod.name}} </option>
+                           </select>
+            
+                          <!-- Button to Open the Modal -->
+                            <button type="button" class="e7e7e7" data-toggle="modal" data-target="#myModal" style="margin: 55px 80px 60px 35px; width:12%;height: 35%;">
+                                    Openmodal
+                                    <!-- <div>
+                                      alert("please select the row");
+                                    </div> -->
+                                  <!-- width:15%;height: 40%; -->
+                            </button>
+
+
+                            <!-- The Modal -->
+                                  <div *ngIf=clickedNow class="modal" id="myModal"    >
+                                  <div class="modal-dialog " style="background:white;width: 480px;min-width:fit-content">
+                                  <!-- <div class="modal-content" style="width: 750px;top: 50px" (click)="modalDataFun()"> -->
+                                  <div class="modal-content" style="width: 950px;">
+                
+                                  <!-- <div class="modal-content" style="width: 750px;top: 50px"></div> -->
+                                <!-- Modal Header -->
+                                <div class="modal-header" style="background:white">
+                                    <h4 class="modal-title">{{modalData.DisplayName | uppercase}}:</h4> 
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                     <!-- Modal body -->
+                                      <div class="modal-body" style="background:white;">
+                                        <ag-grid-angular style="width:900px; height: 200px;top:20px" class="ag-theme-balham" 
+                                          [rowData]=[this.modalData] [singleClickEdit]="true"
+                                          [columnDefs]="columnDefs1"(rowClicked)="onRowSelected($event)"[modules]="modules">
+                                        </ag-grid-angular>   
+                                      </div>
+            
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                          <button *ngIf=clickedNow type="button" class="btn btn-danger"
+                                                      data-dismiss="modal" (click)="saveUpdatedData($event)" >Save</button>
+                                          <button *ngIf=clickedNow type="button" class="btn btn-danger" data-dismiss="modal" 
+                                                      (click)="closeModalData()">Close</button>
+                                    </div>
+                            </div>
+                      </div>
+                </div>
+          </div>
+          <div >
+                    <ag-grid-angular *ngIf=gridDisplay id="girdId12" style="width: 900px; height: 500px;" class="ag-theme-balham" 
+                                    [(rowData)]="rowData" [columnDefs]="columnDefs" [modules]="modules" 
+                                    rowSelection="single" [enableSorting]="true" enableCellChangeFlash="true"
+                                    [pagination]="true"(rowClicked)="onRowClicked($event)"
+                                    (cellMouseOut)="RefreshRisqueBrutColumn()"(selectionChanged)="onSelectionChanged($event)"
+                                    (gridReady)="onGridReady($event)"
+                                    >
+
+                    </ag-grid-angular>
+
+                     <!-- <div *ngIf="dataUpdatedflag">
+                        <ag-grid-angular style="width: 900px; height: 500px;"
+                        class="ag-theme-balham" 
+                        [pagination]="true"
+                        [enableFilter]="true" 
+                        [(rowData)]="updatedModeldata" 
+                        [columnDefs]="columnDefs"
+                        (rowClicked)="onRowClicked($event)"
+                        (gridReady)="onGridReady($event)"
+                        [modules]="modules">
+                        </ag-grid-angular>
+                    </div>  -->
+           </div>   
+                    <!-- </div> -->
+          </div>
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+<app-footer></app-footer>
+
+
+
+<!-- <app-footer></app-footer> -->
