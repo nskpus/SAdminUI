@@ -10,4 +10,4 @@ RUN npm install && npm run build --prod
 
 FROM nginx:alpine
 COPY --from=node /app/dist/SAdminUI /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 81
